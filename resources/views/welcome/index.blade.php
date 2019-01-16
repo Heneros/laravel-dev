@@ -7,6 +7,8 @@
   <title>Document</title>
 </head>
 <body>
-  <h1>hello world</h1>
+  <h1>Hello World</h1>
+  <p><a href="{{ route('events.show', ['id'=> 42]) }}">Laravel Hacking and Coffee</a></p>
+ 
 </body>
 </html>

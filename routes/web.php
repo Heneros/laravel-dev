@@ -11,3 +11,9 @@
 |
 */
 Route::get('/', 'WelcomeController@index');
+Route::get('events/{id}', 'EventsController@show');
+Route::get(
+'events/category/{category}/{subcategory?}',
+'EventsController@category'
+);
+Route::get('meetups/{id}', 'EventsController@show')->name('events.show');
