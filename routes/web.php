@@ -17,3 +17,4 @@ Route::get(
 'EventsController@category'
 );
 Route::get('meetups/{id}', 'EventsController@show')->name('events.show');
+Route::get('events', 'EventsController@index');

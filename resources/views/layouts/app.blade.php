@@ -7,10 +7,6 @@
   <title>Document</title>
 </head>
 <body>
-@extends('layouts.app')
-@section('content')
-<h1>Hello World</h1>
-  <p><a href="{{ route('events.show', ['id'=> 42]) }}">Laravel Homemade and Coffee</a></p>
-  @endsection
+@yield('content')
 </body>
 </html>
