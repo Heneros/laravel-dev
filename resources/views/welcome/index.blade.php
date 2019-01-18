@@ -1,16 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
 @extends('layouts.app')
+
+@section('jumbotron')
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Hello.</h1>
+            <h2>Learn, teach, hack, and make friends with developers in your city.</h2>
+        </div>
+    </div>
+@endsection
+
 @section('content')
-<h1>Hello World</h1>
-  <p><a href="{{ route('events.show', ['id'=> 42]) }}">Laravel Homemade and Coffee</a></p>
-  @endsection
-</body>
-</html>
+
+    <div class="row">
+        <div class="col mh-100">
+            <p>
+                Welcome to Homemade. This is where a list of upcoming events will eventually go.
+            </p>
+        </div>
+    </div>
+
+@endsection
