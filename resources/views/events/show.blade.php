@@ -1,3 +1,1 @@
-{{-- Output the $id variable. --}}
-
-<p>{{ $name }} is now  {{$date}}</p>
+Our {{ $name }} is available on {{ $date }}!

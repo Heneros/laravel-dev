@@ -1,20 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-<ul>
+@extends('layouts.app')
+
+@section('jumbotron')
+        <div class="jumbotron">
+                <div class="container">
+                        <h1>Events</h1>
+                        <h2>Find an event that interests you!</h2>
+                </div>
+        </div>
+@endsection
+
+@section('content')
+
+        <div class="row">
+                <div class="col">
+
+                        <ul>
                                 @foreach ($events as $event)
-                                        <li>{{ $event }}
-                                        @if(strpos($event, 'Laravel') !==false)
-                                        (sweet framework!)
-                                        @endif
-                                        </li>
+                                        <li>{{ $event }}</li>
                                 @endforeach
                         </ul>
-</body>
-</html>
+
+                </div>
+        </div>
+
+@endsection
