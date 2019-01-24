@@ -2,11 +2,6 @@
 
 @section('content')
 
-    <div class="row">
-        <div class="col">
-            <h1>Events Map</h1>
-        </div>
-    </div>
+<h1>Events</h1>
 
 @endsection
-

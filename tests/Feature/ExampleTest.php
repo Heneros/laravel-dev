@@ -18,19 +18,4 @@ class ExampleTest extends TestCase
 
         $response->assertStatus(200);
     }
-
-    public function testNonexistentEndpointReturns404()
-    {
-        $response = $this->get('/contact');
-
-        $response->assertStatus(404);
-    }
-
-    public function testHomepageContainsProjectName()
-    {
-        $response = $this->get('/');
-
-        $response->assertSeeText('Laravel');
-    }
-
 }

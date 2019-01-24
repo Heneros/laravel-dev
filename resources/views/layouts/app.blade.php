@@ -1,36 +1,20 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'HackerPair') }}</title>
-
-    <script src="https://use.fontawesome.com/811fe8e43b.js"></script>
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <title>Document</title>
 </head>
 <body>
 <div id="app">
+@yield('jumbotron')
 
-    @include('layouts._navbar')
-
-    @yield('jumbotron')
-
-    <div class="container">
-        @yield('content')
-    </div>
-
+<div class="container">
+    @yield('content')
 </div>
-
-@include('layouts._footer')
-
-<!-- Scripts -->
-<script src="{{ asset('js/app.js') }}"></script>
+</div>
 </body>
 </html>

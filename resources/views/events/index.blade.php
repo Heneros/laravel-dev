@@ -1,26 +1,20 @@
-@extends('layouts.app')
-
-@section('jumbotron')
-        <div class="jumbotron">
-                <div class="container">
-                        <h1>Events</h1>
-                        <h2>Find an event that interests you!</h2>
-                </div>
-        </div>
-@endsection
-
-@section('content')
-
-        <div class="row">
-                <div class="col">
-
-                        <ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<ul>
                                 @foreach ($events as $event)
-                                        <li>{{ $event }}</li>
+                                        <li>{{ $event }}
+                                        @if(strpos($event, 'Laravel') !==false)
+                                        (sweet framework!)
+                                        @endif
+                                        </li>
                                 @endforeach
                         </ul>
-
-                </div>
-        </div>
-
-@endsection
+</body>
+</html>
