@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Company;
 use Illuminate\Http\Request;
 
-class ComplainesController extends Controller
+class CompaniesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,10 @@ class ComplainesController extends Controller
      */
     public function index()
     {
-        //
+        $companies = Company::all();
+        
+        return view('companies.index', ['companies'=>$companies]);
+
     }
 
     /**
