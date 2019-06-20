@@ -1,5 +1,7 @@
 <?php
 
+use App\User;
+use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
 /*
@@ -13,25 +15,12 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(\App\Models\BlogPost::class, function (Faker $faker) {
-    $title = $faker->sentence(rand(3, 8), true);
-    $txt = $faker->realText(rand(1000, 4000));
-    $isPublished = rand(1, 5) > 1;
-
-    $createdAt = $faker->dateTimeBetween('-3 monthes', '-2 months');
-    
-    $data= [
-        'category_id' => rand(1, 11),
-        'user_id' => (rand(1, 5) == 5) ? 1 :2,
-         'title' => $title,
-         'slug' => str_slug($title),
-         'excerpt' => $faker->text(rand(40, 100)),
-         'content_raw' => $txt,
-         'content_html' => $txt,
-          'is_published' => $isPublished,
-          'published_at' => $isPublished ? $faker->dateTimeBetween('-2 months', '-1 days'):null,
-          'created_at' => $createdAt,
-          'updated_at' => $createdAt,
+$factory->define(User::class, function (Faker $faker) {
+    return [
+        'name' => $faker->name, 
+        'email' => $faker->unique()->safeEmail,
+        'email_verified_at' => now(),
+        'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+        'remember_token' => Str::random(10),
     ];
-    return $data;
 });
