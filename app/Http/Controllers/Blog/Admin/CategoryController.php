@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Blog;
+namespace App\Http\Controllers\Blog\Admin;
 
+use App\Models\BlogCategory;
+use Illuminate\Http\Request; 
 
-use App\Models\BlogPost;
-use Illuminate\Http\Request;
-
-
-class PostController extends BaseController
+class CategoryController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +14,10 @@ class PostController extends BaseController
      */
     public function index()
     {
-        $items = BlogPost::all();
+        $paginator = BlogCategory::paginate(5);
 
-        return view('blog.posts.index', compact('items'));
-    } 
+        return view('blog.admin.category.index', compact('paginator'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -28,7 +26,7 @@ class PostController extends BaseController
      */
     public function create()
     {
-        //
+        dd(__METHOD__);
     }
 
     /**
@@ -39,20 +37,8 @@ class PostController extends BaseController
      */
     public function store(Request $request)
     {
-        //
+        dd(__METHOD__);
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -61,7 +47,7 @@ class PostController extends BaseController
      */
     public function edit($id)
     {
-        //
+        dd(__METHOD__);
     }
 
     /**
@@ -73,17 +59,6 @@ class PostController extends BaseController
      */
     public function update(Request $request, $id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        dd(__METHOD__);
     }
 }
