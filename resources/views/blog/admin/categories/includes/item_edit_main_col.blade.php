@@ -46,13 +46,16 @@
     {{$categoryOption->id}} . {{ $categoryOption->title}}
     </option>
     @endforeach
-    </select>
+    </select> 
     </div>
  
     <div class="form-group">
-    <label for="description">Описание</label>
-   <textarea name="description" class="form-control"id="description"  rows="3">
-    {{ $item->description}}
+    <label for="description">Описание</label> 
+   <textarea name="description" 
+   class="form-control"
+   id="description"  
+   rows="3">
+    {{old('description', $item->description)}}
    </textarea>
     </div>
     </div>
