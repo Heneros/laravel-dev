@@ -1,12 +1,15 @@
 @extends('layouts.app')
 
 @section('content') 
-
+@if($items->exists)
 <form method="POST" action="{{ route('blog.admin.categories.update', $item->id) }}">
     @method('PATCH')
+    @else
+    <form action="POST" action="{{ route('blog.admin.categories.store')}}">
+        @endif
     @csrf 
     <div class="container">
-        {{-- @if($errors->any())
+        @if($errors->any())
         <div class="row justify-content">
             <div class="col-md-11">
                 <div class="alert alert-danger" role="alert"><button type="submit" class="close" data-dismiss="alert" aria-label="Close">
@@ -28,7 +31,7 @@
             </div>
             </div>
         </div>
-        @endif --}}
+        @endif
 
 
         <div class="row justify-content">
