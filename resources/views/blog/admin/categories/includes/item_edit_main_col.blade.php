@@ -17,6 +17,7 @@
     <label for="title">Заголовок</label>
     <input 
     type="text"
+    name="title"
     value="{{ $item->title }}"
     id="title"
     class="form-control"
@@ -29,13 +30,15 @@
     type="text"
     value="{{ $item->slug }}"
     id="slug"
+    name="slug"
     class="form-control"
     required>
     </div>
 
     <div class="form-group">
     <label for="parent_id">Родитель</label>
-    <select name="parent_id" 
+    <select 
+    name="parent_id" 
     id="parent_id"
     class="form-control"
     placeholder="Выберете категорию"
@@ -46,12 +49,13 @@
     {{$categoryOption->id}} . {{ $categoryOption->title}}
     </option>
     @endforeach
-    </select> 
+    </select>  
     </div>
  
     <div class="form-group">
     <label for="description">Описание</label> 
-   <textarea name="description" 
+   <textarea 
+   name="description" 
    class="form-control"
    id="description"  
    rows="3">

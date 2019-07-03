@@ -21,9 +21,9 @@
                 </div>
             </div>
         </div>
-    </div> 
+    </div>  
     <br>
-    <div class="row justify-content-center">
+    <div class="row justify-co ntent-center">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">

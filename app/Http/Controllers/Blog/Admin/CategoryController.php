@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Blog\Admin;
 
 use App\Http\Requests\BlogCategoryUpdateRequest;
+use App\Http\Requests\BlogCategoryCreateRequest;
 use App\Models\BlogCategory;
 use Illuminate\Http\Request; 
 
@@ -40,9 +41,22 @@ class CategoryController extends BaseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BlogCategoryCreateRequest $request)
     {
-         dd(__METHOD__);
+        $data = $request->input();
+        if(empty($data['slug'])){
+            $data['slug'] = str_slug($data['title']);
+        }
+        $item = new BlogCategory($data);
+        $item->save();
+
+        if($item){
+            return redirect()->route('blog.admin.categories.edit', [$item->id])
+            ->with(['success' => 'Успешно сохранено']);
+        }else{
+            return back()->withErrors(['msg' => 'Ошибка сохранения'])
+            ->withInput();
+        }
     }
     /**
      * Show the form for editing the specified resource.
@@ -67,17 +81,6 @@ class CategoryController extends BaseController
      */
     public function update(BlogCategoryUpdateRequest $request, $id)
     {
-        // $rules = [
-        //     'title' => 'required|min:5|max:200',
-        //     'slug' => 'max:200',
-        //     'description' => 'string|max:500|min:3',
-        //     'parent_id' => 'required|integer|exists:blog_categories, id',
-        // ];
-
-        //  $validatedData = $this->validate($request, $rules);
-
-        // $validatedData = $request->validate($rules);
-
         $item = BlogCategory::find($id);
          if(empty($item)) {
             return back()
@@ -86,6 +89,9 @@ class CategoryController extends BaseController
         }
 
         $data = $request->all(); 
+        if(empty($data['slug'])){
+            $data['slug'] = str_slug($data['title']);
+        }
         
         $data = $request->except('_method');
 
