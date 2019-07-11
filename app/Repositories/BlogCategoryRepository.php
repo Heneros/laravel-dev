@@ -24,6 +24,16 @@ public function getForCombox(){
     return $this->startConditions()->all();
 }
 
+public function getAllWithPaginate($perPage = null){
+    $fields = ['id', 'title', 'parent_id'];
+
+    $result = $this
+    ->startConditions()
+    ->select($fields)
+    ->paginate($perPage);
+
+    return $result;
+}
 }
 
 

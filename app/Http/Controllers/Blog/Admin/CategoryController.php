@@ -6,6 +6,7 @@ use App\Http\Requests\BlogCategoryUpdateRequest;
 use App\Http\Requests\BlogCategoryCreateRequest;
 use App\Models\BlogCategory;
 use Illuminate\Http\Request; 
+use App\Repositories\BlogCategoryRepository;
 
 class CategoryController extends BaseController
 {
@@ -15,22 +16,32 @@ class CategoryController extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
+    private $blogCategoryRepository;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->blogCategoryRepository = app(BlogCategoryRepository::class);
+    }
+
+
     public function index()
     {
-        $paginator = BlogCategory::paginate(15);
+        $paginator = $this->blogCategoryRepository->getAllWithPaginator(5);
 
         return view('blog.admin.categories.index', compact('paginator'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create()
     {
      $item = new BlogCategory();
-     $categoryList = BlogCategory::all();
+      $categoryList = $this->blogCategoryRepository->getForComBox();
+
 
      return view('blog.admin.categories.edit', compact('item', 'categoryList'));
     }
